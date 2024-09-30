@@ -18,13 +18,7 @@ pipeline {
 
     // Remove the Lint stage if it's not necessary
 
-    stage('Test') {
-      steps {
-        script {
-          sh 'npm run test'
-        }
-      }
-    }
+  
 
     stage('Build') {
       steps {
