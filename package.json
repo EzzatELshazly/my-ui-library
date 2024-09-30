@@ -4,8 +4,7 @@
   "private": false,
   "publishConfig": {
     "access": "public"
-  }
-  
+  },
   "dependencies": {
     "@testing-library/user-event": "^13.5.0",
     "@types/node": "^16.18.112",
@@ -41,5 +40,3 @@
     ]
   }
 }
-
-
