@@ -2,7 +2,7 @@ pipeline {
   agent any
   
   environment {
-    NPM_CREDENTIALS = credentials('NPM-cred-Token')
+    NPM_CREDENTIALS = credentials('NPM-cred-Token-Secret')
   }
 
   stages {
@@ -28,7 +28,7 @@ pipeline {
     stage('Publish to npm Registry') {
       steps {
         script {
-          withCredentials([string(credentialsId: 'NPM-cred-Token', variable: 'NPM_TOKEN')]) {
+          withCredentials([string(credentialsId: 'NPM-cred-Token-Secret', variable: 'NPM_TOKEN')]) {
             sh """
               # Create .npmrc with token for npm publish
               echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
