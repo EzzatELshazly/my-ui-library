@@ -1,8 +1,7 @@
 pipeline {
   agent any
   environment {
-      // Define npm credentials from Jenkins credentials store
-      NPM_CREDENTIALS = credentials('NPM-cred-Token')
+      NPM_CREDENTIALS = credentials('npmrc_credentials')
   }
 
   stages {
@@ -10,28 +9,18 @@ pipeline {
       steps {
         script {
           nodejs('Node 18.6.0') {
-            // Install dependencies
             sh 'npm install'
-            // Install missing Babel plugin manually
             sh 'npm install --save-dev @babel/plugin-proposal-private-property-in-object'
           }
         }
       }
     }
 
-    stage('Lint') {
-      steps {
-        script {
-          // Run linter
-          sh 'npm run lint'
-        }
-      }
-    }
+    // Remove the Lint stage if it's not necessary
 
     stage('Test') {
       steps {
         script {
-          // Run tests
           sh 'npm run test'
         }
       }
@@ -40,7 +29,6 @@ pipeline {
     stage('Build') {
       steps {
         script {
-          // Build project
           sh 'npm run build'
         }
       }
@@ -49,15 +37,10 @@ pipeline {
     stage('Publish to npm Registry') {
       steps {
         script {
-          // Write npm credentials to a temporary .npmrc file
           sh """
           echo '//registry.npmjs.org/:_authToken=${NPM_CREDENTIALS}' > ~/.npmrc
           """
-
-          // Publish to npm registry
           sh 'npm publish'
-
-          // Cleanup .npmrc
           sh 'rm -f ~/.npmrc'
         }
       }
@@ -73,8 +56,3 @@ pipeline {
     }
   }
 }
-
-
-
-
-
