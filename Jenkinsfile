@@ -27,16 +27,16 @@ pipeline {
 
     stage('Publish to npm Registry') {
       steps {
-        withEnv(["NPM_TOKEN=${NPM_CREDENTIALS}"]) {
-          script {
-            sh '''
+        script {
+          withCredentials([string(credentialsId: 'NPM-cred-Token', variable: 'NPM_TOKEN')]) {
+            sh """
               # Create .npmrc with token for npm publish
               echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
               # Publish the package to npm with public access
               npm publish --access public || { echo "publish failed"; exit 1; }
               # Clean up .npmrc
               rm -f ~/.npmrc
-            '''
+            """
           }
         }
       }
