@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment {
-      NPM_CREDENTIALS = credentials('NPM-Token-CICD')
+      NPM_CREDENTIALS = credentials('NPM-cred-Token')
   }
 
   stages {
