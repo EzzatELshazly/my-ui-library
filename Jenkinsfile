@@ -1,6 +1,10 @@
 pipeline {
   agent any
-
+  environment {
+        // Define npm credentials from Jenkins credentials store
+        NPM_CREDENTIALS = credentials('NPM-cred-Token')
+    }
+ 
   stages {
     stage('Install Dependencies') {
       steps {
@@ -11,30 +15,52 @@ pipeline {
         }
       }
     }
-
+ 
     stage('Lint') {
       steps {
         sh 'npm run lint'
       }
     }
-
+ 
     stage('Test') {
       steps {
         sh 'npm run test'
       }
     }
-
+ 
     stage('Build') {
       steps {
         sh 'npm run build'
       }
     }
-  }
+    stage('Publish to npm Registry') {
+        steps {
+            script {
+                // Write npm credentials to a temporary .npmrc file
+                sh """
+                echo '//registry.npmjs.org/:_authToken=${NPM_CREDENTIALS}' > ~/.npmrc
+                """
 
-  post {
-    always {
-      cleanWs() // Clean workspace after each build
+                // Publish to npm registry
+                sh 'npm publish'
+
+                // Cleanup .npmrc
+                sh 'rm -f ~/.npmrc'
+            }
+        }
     }
   }
+ 
+  post {
+        success {
+            echo 'NPM package published successfully!'
+        }
+        failure {
+            echo 'Failed to publish NPM package.'
+        }
+    }
 }
+
+
+
 
