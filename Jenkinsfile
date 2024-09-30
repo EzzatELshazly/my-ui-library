@@ -33,7 +33,7 @@ pipeline {
               # Create .npmrc with token for npm publish
               echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
               # Publish the package to npm with public access
-              npm publish --access public
+              npm publish --access public || { echo "publish failed"; exit 1; }
               # Clean up .npmrc
               rm -f ~/.npmrc
             '''
