@@ -17,8 +17,6 @@ The pipeline involves several stages:
 - Build Automation: Using Node.js and npm, Jenkins installs dependencies, builds the React UI - library, and runs unit tests.
 - Publishing: After a successful build, the library is published to the npm registry with public access.
 - Cleanup: Jenkins cleans up after publishing to keep the environment secure.
-- Architecture as shown in the image bellow:
-!<img width="1320" alt="Archeticture" src="https://github.com/user-attachments/assets/9f6de9ad-2ed5-44e3-b458-d8e00aa81ee9">
 
 ## This CI/CD pipeline helps in:
 - Ensuring smooth integration and delivery of updates
