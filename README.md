@@ -28,9 +28,11 @@ The pipeline involves several stages:
 
 ## Quick Start Guide:
 - Created a linux Redhat Machine in AWS.
-!<img width="1320" alt="Instance" src="https://github.com/user-attachments/assets/9f6de9ad-2ed5-44e3-b458-d8e00aa81ee9">
+![AWS machine](https://github.com/user-attachments/assets/6d051eaa-1ece-4e43-bd0f-6664fcaac08d)
+
 - Configured a vpc with 2 subnets with routetable associated with internet gateway.
-!<img width="1320" alt="Network Config" src="https://github.com/user-attachments/assets/9f6de9ad-2ed5-44e3-b458-d8e00aa81ee9">
+![VPC with public subnet and routetable associated with IGW](https://github.com/user-attachments/assets/2d10a3df-7e3b-425e-acd8-e9919a132a4d)
+
 ## Accessed the machine and start to install Required Tools and Dependencies
 Step 1: Set Up a React UI Library with TypeScript
 1- Install Node.js and npm on RedHat:
@@ -59,6 +61,7 @@ Verify the Java version, execute below command
 ```
 java --version
 ```
+
 Add Jenkins Repository
 ```
 sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
@@ -72,7 +75,7 @@ Run below command to reload the Jenkins daemon
 ```
 sudo systemctl daemon-reload
 ```
-Start and enable Jenkins service using following commands
+Start and enable Jenkins service using following commands and it must me running
 ```
 sudo systemctl start Jenkins
 sudo systemctl status jenkins
@@ -87,16 +90,17 @@ Access Jenkins Web Interface
 ```
 http://your_server_ip:8080
 ```
-!<img width="1320" alt="Start with jenkins" src="https://github.com/user-attachments/assets/9f6de9ad-2ed5-44e3-b458-d8e00aa81ee9">
+![start jenkins](https://github.com/user-attachments/assets/d6daad4d-4c86-4699-aacc-7f74d3c40266)
 
 Copy the password and paste it into the Jenkins web interface and then click on Continue.
 ```
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
--  We need to create an nginx server block for our Magento website:
-```
-sudo vim /etc/nginx/sites-enabled/magento.conf
-```
+
+Install Recommended Plugins
+![Install-Suggested-Jenkins-Plugins-RHEL9-RockyLinux9-1024x556](https://github.com/user-attachments/assets/fbc56f92-21d1-4ff2-8bc2-10e6f306789b)
+
+![create fisrt admin](https://github.com/user-attachments/assets/c3a45757-1d39-426e-9bb3-87e91c610f36)
 
 ## Configure GitHub Credentials in Jenkins
 Create GitHub Credentials:
