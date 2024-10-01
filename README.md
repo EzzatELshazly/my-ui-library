@@ -13,10 +13,10 @@ Before setting up the Jenkins pipeline, ensure you have the following:
 ## Architecture: 
 The pipeline involves several stages:
 
-1- Source Control (GitHub): The source code is hosted on GitHub, which Jenkins monitors for changes.
-2- Build Automation: Using Node.js and npm, Jenkins installs dependencies, builds the React UI 3- library, and runs unit tests.
-4- Publishing: After a successful build, the library is published to the npm registry with public access.
-5- Cleanup: Jenkins cleans up after publishing to keep the environment secure.
+- Source Control (GitHub): The source code is hosted on GitHub, which Jenkins monitors for changes.
+- Build Automation: Using Node.js and npm, Jenkins installs dependencies, builds the React UI - library, and runs unit tests.
+- Publishing: After a successful build, the library is published to the npm registry with public access.
+- Cleanup: Jenkins cleans up after publishing to keep the environment secure.
 - Architecture as shown in the image bellow:
 !<img width="1320" alt="Archeticture" src="https://github.com/user-attachments/assets/9f6de9ad-2ed5-44e3-b458-d8e00aa81ee9">
 
