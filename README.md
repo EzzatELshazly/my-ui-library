@@ -26,10 +26,10 @@ The pipeline involves several stages:
 
 ## Quick Start Guide:
 - Created a linux Redhat Machine in AWS.
-![AWS machine](https://github.com/user-attachments/assets/6d051eaa-1ece-4e43-bd0f-6664fcaac08d)
+![AWS machine](https://github.com/user-attachments/assets/28e73a29-b2ee-4b93-96e3-a586105e9dc5)
 
 - Configured a vpc with 2 subnets with routetable associated with internet gateway.
-![VPC with public subnet and routetable associated with IGW](https://github.com/user-attachments/assets/2d10a3df-7e3b-425e-acd8-e9919a132a4d)
+![VPC with public subnet and routetable associated with IGW](https://github.com/user-attachments/assets/9e1d4207-ced6-4623-a780-be581e8d49e9)
 
 ## Accessed the machine and start to install Required Tools and Dependencies
 Step 1: Set Up a React UI Library with TypeScript
@@ -133,7 +133,7 @@ In the root of your project (inside your GitHub repo), create a Jenkinsfile:
 ```
 vim Jenkinsfile
 ```
-add the following pipelinecode to jenkins file: 
+add the following pipeline code to jenkins file: 
 ```
 pipeline {
   agent any
